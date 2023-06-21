@@ -25,7 +25,7 @@ Availability poisoning is an emerging and popular topic that investigates stealt
 
 APBench contains the following attacks and defenses:
 
-**Attack**:
+**Attacks**:
   - 11 availability poisoning attack methods: [DeepConfuse](https://papers.nips.cc/paper_files/paper/2019/file/1ce83e5d4135b07c0b82afffbe2b3436-Paper.pdf),
   [NTGA](http://proceedings.mlr.press/v139/yuan21b/yuan21b.pdf),
   [EM](https://openreview.net/pdf?id=iAmZUo0DxC0),

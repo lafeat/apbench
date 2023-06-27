@@ -13,8 +13,8 @@ else:
 class MadrysLoss(nn.Module):
     def __init__(
         self,
-        step_size=0.007,
-        epsilon=0.031,
+        step_size=2/255,
+        epsilon=8/255,
         perturb_steps=10,
         distance="L_inf",
     ):

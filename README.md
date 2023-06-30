@@ -96,7 +96,7 @@ The parameter choices for the above commands are as follows:
 - --arch `<Model_arch>`: `r18`, `r50`, `se18`, `mv2`, `de121`.
 - --type `<Attack>`: `ar`, `dc`, `em`, `rem`, `hypo`, `tap`, `lsp`, `ntga`, `ops`.
   
-For UEraser and AVATAR, you should 
+For AVATAR, you should 
 firstly generate the processed dataset with script below:
 ```shell
 python pure_gen.py --dataset <Dataset> --type <Attack>

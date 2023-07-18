@@ -5,7 +5,7 @@ import os
 import argparse
 import numpy as np
 import torch.nn.functional as F
-from mardrys import MadrysLoss
+from madrys import MadrysLoss
 from nets import *
 import torchvision.models as models
 from util import *

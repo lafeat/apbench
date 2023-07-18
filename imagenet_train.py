@@ -8,7 +8,7 @@ import argparse
 import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
-from mardrys import MadrysLoss
+from madrys import MadrysLoss
 from nets.resnet_image import ResNet_Model
 import torchvision.models as models
 from util import *

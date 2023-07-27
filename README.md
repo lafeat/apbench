@@ -126,7 +126,7 @@ You need to confirm that the target poisoned dataset has been generated in advan
 
 | Defenses         | File name                                                  |
 |-      |-      | 
-| AT               | [mardrys.py](./mardrys.py)                                 | 
+| AT               | [mardrys.py](./madrys.py)                                 | 
 | ISS              | -                                                          | 
 | UEraser          | [ueraser.py](./defense/ueraser.py)                         | 
 | AVATAR           | [diffpure.py](./defense/diffusion/__init__.py)             | 

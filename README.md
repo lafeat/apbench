@@ -1,4 +1,6 @@
 # APBench: A Unified Availability Poisoning Attack and Defenses Benchmark
+[![MIT](https://img.shields.io/badge/License-MIT-green)](https://github.com/lafeat/apbench/blob/main/LICENSE)
+
 Availability poisoning is an emerging and popular topic that investigates stealthy alterations on data to make that data unusable for deep learning model training. Recent papers have proposed a number of usability poisoning attacks and defenses. It is important to establish a benchmark to review current progress and facilitate future research in the area of availability poisoning. APBench aims to provide easy implementations of availability poisoning attack & defense methods to facilitate future research as well as a comprehensive evaluation of existing attack and defense methods. We eagerly welcome you to contribute your availability poisoning attack & defense methods to APBench.
 
 <p align="center">
@@ -171,3 +173,8 @@ Then, you can train the unsupervised model on UEraser or AVATAR with a demo scri
 ```shell
 python us_train_pu.py --dataset <Dataset>  --arch <Model_arch> --defense <Defense> 
 ```
+## Dataset source
+
+We use the pre-processed ImageNet-100 [Download Link](https://github.com/TerryLoveMl/ImageNet-100-datasets).
+You can also get ImageNet-100 by slicing ImageNet-1K (slight difference in sample size).
+

@@ -80,13 +80,13 @@ following the code structure.
 
 ## Quick Start
 
-**Generate poisoned datasets**: 
+**Step 1: Generate poisoned datasets**: 
 For example, if you want to generate poisoned datasets of EM, you should go to the `./EM`, and follow the readme there to generate poisoned datasets.
 ```shell
 python ./EM/em_poisons_generate.py --dataset <Dataset> --eps <Eps_bound>
 ```
-**Training on poisoned datasets**: 
-You can train the model with a demo script below:
+**Step 2: Training on poisoned datasets**: 
+If you have already generated poisoned dataset, you can train the model with a demo script below:
 ```shell
 python train.py --dataset <Dataset> --<Defense> --arch <Model_arch> --type <Attack>
 ```
@@ -95,16 +95,27 @@ The parameter choices for the above commands are as follows:
 - --`<Defense>`: `nodefense`, `cutout`, `cutmix`, `mixup`, `mixup`, `bdr`, `gray`, `jpeg`, `gaussian`, `ueraser`, `at`.
 - --arch `<Model_arch>`: `r18`, `r50`, `se18`, `mv2`, `de121`.
 - --type `<Attack>`: `ar`, `dc`, `em`, `rem`, `hypo`, `tap`, `lsp`, `ntga`, `ops`.
-  
-For AVATAR, you should 
-firstly generate the processed dataset with script below:
+
+The above process does not include the AVATAR defense method,
+if you need to implement AVATAR defense, follow the script below：
+
+**Step 1: Generate poisoned datasets**: 
+For AVATAR, you should also firstly generate poisoned datasets following the above script.
+
+**Step 2: Generate purified datasets**: 
+If you have already generated poisoned dataset, you can generate the purified dataset with script below:
 ```shell
 python pure_gen.py --dataset <Dataset> --type <Attack>
 ```
+**Step 3: Training on poisoned datasets**: 
 Then, train the model on processed dataset with script below:
 ```shell
 python train.py --pure --dataset <Dataset> --arch <Model_arch> --type <Attack>
 ```
+The parameter choices for the above commands are as follows:
+- --dataset `<Dataset>`: `c10` , `c100`, `svhn`.
+- --arch `<Model_arch>`: `r18`, `r50`, `se18`, `mv2`, `de121`.
+- --type `<Attack>`: `ar`, `dc`, `em`, `rem`, `hypo`, `tap`, `lsp`, `ntga`, `ops`.
   
 The trained checkpoints will be saved at `log/<Dataset>/<Attack>/`.
 You need to confirm that the target poisoned dataset has been generated in advance.
@@ -130,6 +141,8 @@ You need to confirm that the target poisoned dataset has been generated in advan
 | ISS              | -                                                          | 
 | UEraser          | [ueraser.py](./defense/ueraser.py)                         | 
 | AVATAR           | [diffpure.py](./defense/diffusion/__init__.py)             | 
+
+You can refer to these codes and modify them according to your needs.
 
 ## Unsupervised Methods
   

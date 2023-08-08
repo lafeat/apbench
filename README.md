@@ -5,11 +5,13 @@ Availability poisoning is an emerging and popular topic that investigates stealt
 
 <p align="center">
 <br>
-   <a href=""> Paper </a > •  <a href="https://apbench.github.io/"> Leaderboard </a > <br>
+   <a href="https://arxiv.org/pdf/2308.03258.pdf"> Paper </a > •  <a href="https://apbench.github.io/"> Leaderboard </a > <br>
 <br>
 </p >
 
 <img src="assets/main.png" width="800px">
+
+## Content
 
 * [Overview](#Overview)
 

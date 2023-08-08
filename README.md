@@ -1,4 +1,6 @@
 # APBench: A Unified Availability Poisoning Attack and Defenses Benchmark
+![Python](https://img.shields.io/badge/Python-3.8-green)
+![PyTorch](https://img.shields.io/badge/PyTorch-0.9.1-green)
 [![MIT](https://img.shields.io/badge/License-MIT-green)](https://github.com/lafeat/apbench/blob/main/LICENSE)
 
 Availability poisoning is an emerging and popular topic that investigates stealthy alterations on data to make that data unusable for deep learning model training. Recent papers have proposed a number of usability poisoning attacks and defenses. It is important to establish a benchmark to review current progress and facilitate future research in the area of availability poisoning. APBench aims to provide easy implementations of availability poisoning attack & defense methods to facilitate future research as well as a comprehensive evaluation of existing attack and defense methods. We eagerly welcome you to contribute your availability poisoning attack & defense methods to APBench.

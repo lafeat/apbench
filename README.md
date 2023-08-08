@@ -13,6 +13,11 @@ Availability poisoning is an emerging and popular topic that investigates stealt
 
 <img src="assets/main.png" width="800px">
 
+### ❗V1.1 Model Updates
+Considering the black-box poisoning scenario, we additionally add 2 transformer-based models ViT and CaiT.
+- **[vit_small.py](./nets/vit_small.py)**: Vit-small model.
+- **[cait_small.py](./nets/cait_small.py)**: Cait-small model.
+
 ## Content
 
 * [Overview](#Overview)

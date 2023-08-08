@@ -17,3 +17,5 @@ from .efficientnet import *
 from .regnet import *
 from .dla_simple import *
 from .dla import *
+from .cait_small import *
+from .vit_small import *

@@ -159,7 +159,7 @@ def main():
     )
 
     parser.add_argument(
-        "--arch", default="r18", type=str, help="r18, r50, se18, mv2, de121"
+        "--arch", default="r18", type=str, help="r18, r50, se18, mv2, de121, vit, cait"
     )
     args = parser.parse_args()
 
@@ -191,12 +191,19 @@ def main():
         model = MobileNetV2(num_classes)
     elif args.arch == "de121":
         model = DenseNet121(num_classes)
+    elif args.arch == "vit":
+        model = Vit_cifar(num_classes)
+    elif args.arch == "cait":
+        model = Cait_cifar(num_classes)
 
     model.to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(
-        model.parameters(), lr=args.lr, momentum=0.9, weight_decay=5e-4
-    )
+    if args.arch == "vit" or args.arch == "cait":
+        optimizer = optim.Adam(model.parameters(), lr=args.lr)
+    else:
+        optimizer = optim.SGD(
+            model.parameters(), lr=args.lr, momentum=0.9, weight_decay=5e-4
+        )
     scheduler = torch.optim.lr_scheduler.MultiStepLR(
         optimizer, milestones=[100, 200, 300], gamma=0.5, last_epoch=-1, verbose=False
     )

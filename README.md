@@ -57,7 +57,7 @@ APBench contains the following attacks and defenses:
   
  **Datasets**: CIFAR-10, CIFAR-100, SVHN, ImageNet-Subset(100).
  
- **Models**: ResNet-18, ResNet-50, SENet-18, MobileNet-V2, DenseNet-121.
+ **Models**: ResNet-18, ResNet-50, SENet-18, MobileNet-V2, DenseNet-121, Vit-small, CaiT-small.
  
  ## Installation
  You can run the following script to configurate necessary environment:

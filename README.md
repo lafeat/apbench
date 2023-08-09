@@ -104,7 +104,7 @@ python train.py --dataset <Dataset> --<Defense> --arch <Model_arch> --type <Atta
 The parameter choices for the above commands are as follows:
 - --dataset `<Dataset>`: `c10` , `c100`, `svhn`.
 - --`<Defense>`: `nodefense`, `cutout`, `cutmix`, `mixup`, `mixup`, `bdr`, `gray`, `jpeg`, `gaussian`, `ueraser`, `at`.
-- --arch `<Model_arch>`: `r18`, `r50`, `se18`, `mv2`, `de121`.
+- --arch `<Model_arch>`: `r18`, `r50`, `se18`, `mv2`, `de121`, `vit`, `cait`.
 - --type `<Attack>`: `ar`, `dc`, `em`, `rem`, `hypo`, `tap`, `lsp`, `ntga`, `ops`.
 
 The above process does not include the AVATAR defense method,
@@ -125,7 +125,7 @@ python train.py --pure --dataset <Dataset> --arch <Model_arch> --type <Attack>
 ```
 The parameter choices for the above commands are as follows:
 - --dataset `<Dataset>`: `c10` , `c100`, `svhn`.
-- --arch `<Model_arch>`: `r18`, `r50`, `se18`, `mv2`, `de121`.
+- --arch `<Model_arch>`: `r18`, `r50`, `se18`, `mv2`, `de121`, `vit`, `cait`.
 - --type `<Attack>`: `ar`, `dc`, `em`, `rem`, `hypo`, `tap`, `lsp`, `ntga`, `ops`.
   
 The trained checkpoints will be saved at `log/<Dataset>/<Attack>/`.

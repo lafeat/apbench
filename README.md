@@ -192,12 +192,10 @@ You can also get ImageNet-100 by slicing ImageNet-1K (slight difference in sampl
 If you find this benchmark or code is helpful for your research, please cite our paper:
 
 ```
-@misc{qin2023apbench,
-      title={APBench: A Unified Benchmark for Availability Poisoning Attacks and Defenses}, 
-      author={Tianrui Qin and Xitong Gao and Juanjuan Zhao and Kejiang Ye and Cheng-Zhong Xu},
-      year={2023},
-      eprint={2308.03258},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{qin2023apbench,
+  title={APBench: A Unified Benchmark for Availability Poisoning Attacks and Defenses},
+  author={Qin, Tianrui and Gao, Xitong and Zhao, Juanjuan and Ye, Kejiang and Xu, Cheng-Zhong},
+  journal={arXiv preprint arXiv:2308.03258},
+  year={2023}
 }
 ```

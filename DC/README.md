@@ -9,6 +9,6 @@ The parameter choices for the above commands are as follows:
 - --workers `<Number of workers>`: `4`, `8`, ...
 
 ### Acknowledgement
-- Code adapted from the official implementation of AR:
-  [[Code]](https://github.com/psandovalsegura/autoregressive-poisoning)
-  [[Paper]](https://arxiv.org/pdf/2206.03693.pdf).
+- Code adapted from the official implementation of DC:
+  [[Code]](https://github.com/kingfengji/DeepConfuse)
+  [[Paper]](https://papers.nips.cc/paper_files/paper/2019/file/1ce83e5d4135b07c0b82afffbe2b3436-Paper.pdf).

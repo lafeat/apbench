@@ -92,10 +92,14 @@ following the code structure.
 ## Quick Start
 
 **Step 1: Generate poisoned datasets**: 
-For example, if you want to generate poisoned datasets of EM, you should go to the `./EM`, and follow the readme there to generate poisoned datasets.
+For example, if you want to generate poisoned datasets of EM, you should run with a demo script below:.
 ```shell
-python ./EM/em_poisons_generate.py --dataset <Dataset> --eps <Eps_bound>
+python poisons_generate.py --type em --dataset <Dataset> --eps <Eps_bound>
 ```
+The parameter choices for the above commands are as follows:
+- --dataset `<Dataset>`: `c10` , `c100`, `svhn`, `imagenet100`.
+- --type `<Attack>`: `ar`, `dc`, `em`, `rem`, `hypo`, `tap`, `lsp`, `ntga`, `ops`.
+P.S. `em`, `rem` and `lsp` support [`c10` , `c100`, `svhn`, `imagenet100`]; `ops` and `ar` support [`c10` , `c100`, `svhn`]; `dc`, `hypo`, `tap` and `ntga` support [`c10`].
 **Step 2: Training on poisoned datasets**: 
 If you have already generated poisoned dataset, you can train the model with a demo script below:
 ```shell

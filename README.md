@@ -100,6 +100,7 @@ The parameter choices for the above commands are as follows:
 - --dataset `<Dataset>`: `c10` , `c100`, `svhn`, `imagenet100`.
 - --type `<Attack>`: `ar`, `dc`, `em`, `rem`, `hypo`, `tap`, `lsp`, `ntga`, `ops`.
 P.S. `em`, `rem` and `lsp` support [`c10` , `c100`, `svhn`, `imagenet100`]; `ops` and `ar` support [`c10` , `c100`, `svhn`]; `dc`, `hypo`, `tap` and `ntga` support [`c10`].
+
 **Step 2: Training on poisoned datasets**: 
 If you have already generated poisoned dataset, you can train the model with a demo script below:
 ```shell

@@ -1,15 +1,12 @@
 import torch.optim as optim
 import kornia.augmentation as K
 from defense.ueraser import UEraser_img
-from sklearn.datasets import make_classification
-from LSP.lsp_poisons_generate import comput_l2norm_lim, normalize_l2norm
 import os
 import argparse
 import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 from madrys import MadrysLoss
-from nets.resnet_image import ResNet_Model
 import torchvision.models as models
 from util import *
 

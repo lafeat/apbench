@@ -194,7 +194,7 @@ RANDOM_3C_AR_PARAMS_RNMR_10 = [
     ),
 ]
 
-RANDOM_100CLASS_3C_AR_PARAMS_RNMR_3 = torch.load("params-classes-100-mr-3.pt")
+RANDOM_100CLASS_3C_AR_PARAMS_RNMR_3 = torch.load("attack/data/params-classes-100-mr-3.pt")
 
 geo_a1_r12 = np.array(
     [

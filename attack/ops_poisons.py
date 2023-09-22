@@ -1,4 +1,3 @@
-import torchvision.datasets as datasets
 import torch
 import torchvision.transforms as transforms
 import argparse
@@ -6,48 +5,6 @@ import numpy as np
 from tqdm import tqdm
 import PIL
 import os
-
-
-class CIFAR100_w_indices(datasets.CIFAR100):
-    def __len__(self):
-        return len(self.data)
-
-    def __getitem__(self, index):
-        img, target = self.data[index], self.targets[index]
-        img = PIL.Image.fromarray(img)
-        if self.transform is not None:
-            img = self.transform(img)
-        if self.target_transform is not None:
-            target = self.target_transform(target)
-        return img, target, index
-
-
-class CIFAR10_w_indices(datasets.CIFAR10):
-    def __len__(self):
-        return len(self.data)
-
-    def __getitem__(self, index):
-        img, target = self.data[index], self.targets[index]
-        img = PIL.Image.fromarray(img)
-        if self.transform is not None:
-            img = self.transform(img)
-        if self.target_transform is not None:
-            target = self.target_transform(target)
-        return img, target, index
-
-
-class SVHN_w_indices(datasets.SVHN):
-    def __len__(self):
-        return len(self.data)
-
-    def __getitem__(self, index):
-        img, target = self.data[index], self.labels[index]
-        img = PIL.Image.fromarray(np.transpose(img, (1, 2, 0)))
-        if self.transform is not None:
-            img = self.transform(img)
-        if self.target_transform is not None:
-            target = self.target_transform(target)
-        return img, target, index
 
 
 def pixel_search(clean_train_data, pert_init=None, sparsity=1):
@@ -162,70 +119,3 @@ class Perturbed_Dataset(torch.utils.data.Dataset):
         return img_p, target
 
 
-def create_poison(args):
-    if args.dataset == "c10":
-        train_dataset = CIFAR10_w_indices(
-            root=os.environ.get("CIFAR_PATH", "../dataset/cifar-10/"),
-            train=True,
-            download=True,
-            transform=transforms.ToTensor(),
-        )
-    elif args.dataset == "svhn":
-        train_dataset = SVHN_w_indices(
-            root=os.environ.get("CIFAR_PATH", "../dataset/SVHN/"),
-            split="train",
-            download=True,
-            transform=transforms.ToTensor(),
-        )
-    images = train_dataset.data.astype(np.float32) / 255
-    noise = pixel_search(train_dataset, sparsity=args.sparsity)
-    if args.dataset == "svhn":
-        targets = np.array(train_dataset.labels)
-    else:
-        targets = np.array(train_dataset.targets)
-
-    pert_train_data = Perturbed_Dataset(
-        images, noise, targets, transforms.ToTensor())
-    export_poison(args, pert_train_data, train_dataset)
-
-
-def export_poison(args, advinputs, trainset):
-    directory = "../dataset/ops_poisons/"
-    path = os.path.join(directory, args.dataset)
-    if not os.path.exists(path):
-        os.makedirs(path)
-
-    def _torch_to_PIL(image_tensor):
-        image_denormalized = image_tensor
-        image_torch_uint8 = (
-            image_denormalized.mul(255)
-            .add_(0.5)
-            .clamp_(0, 255)
-            .permute(1, 2, 0)
-            .to("cpu", torch.uint8)
-        )
-        image_PIL = PIL.Image.fromarray(image_torch_uint8.numpy())
-        return image_PIL
-
-    def _save_image(input, label, idx, location, train=True):
-        filename = os.path.join(location, str(idx) + ".png")
-        adv_input = advinputs[idx][0]
-        _torch_to_PIL(adv_input).save(filename)
-
-    os.makedirs(os.path.join(path, "data"), exist_ok=True)
-    for input, label, idx in tqdm(trainset, desc="Poisoned dataset generation"):
-        _save_image(input, label, idx, location=os.path.join(
-            path, "data"), train=True)
-    print("Dataset fully exported.")
-
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", default="c10", type=str, help="c10, svhn")
-    parser.add_argument("--sparsity", type=int, default=1)
-    args = parser.parse_args()
-    create_poison(args)
-
-
-if __name__ == "__main__":
-    main()

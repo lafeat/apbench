@@ -11,7 +11,7 @@ import os
 import cv2
 import PIL.Image as Image
 from util_us import DatasetPoisoning
-from util import CIFAR10_w_indices, NTGA_Dataset_load
+
 
 
 def patch_noise_extend_to_img(noise, image_size=[32, 32, 3], patch_location="center"):
@@ -170,7 +170,7 @@ def set_loader(args):
                              delta=delta.to("cpu"), args=args),
         ]
 
-        train_dataset = CIFAR10_Transform_UCL(
+        train_dataset = CIFAR10_Transform(
             root="dataset/cifar-10/",
             train=True,
             pre_transform=None,

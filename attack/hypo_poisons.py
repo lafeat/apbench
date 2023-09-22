@@ -191,7 +191,7 @@ def batch_poison(model, x, target, args):
     orig_x = x.clone().detach()
     step = LinfStep(orig_x, args.eps, args.step_size)
 
-    for _ in range(args.num_steps):
+    for _ in range(100):
         x = x.clone().detach().requires_grad_(True)
         logits = model(x)
         loss = nn.CrossEntropyLoss()(logits, target)
@@ -216,62 +216,5 @@ def poison_hypo(args, loader, model):
     return poisoned_input
 
 
-def create_poison(args):
-    train_dataset = CIFAR10_w_indices(
-        root=os.environ.get("CIFAR_PATH", "../dataset/cifar-10/"),
-        train=True,
-        download=True,
-        transform=transforms.ToTensor(),
-    )
-    dataloader = DataLoader(train_dataset, batch_size=512, shuffle=False)
-    model = ResNet18()
-    print("Loading checkpoint")
-    checkpoint = torch.load("checkpoint.pth")
-
-    model.load_state_dict(checkpoint["model"])
-    model = torch.nn.DataParallel(model)
-    model = model.cuda()
-    model.eval()
-    advinputs = poison_hypo(args, dataloader, model)
-
-    directory = "../dataset/hypo_poisons/"
-    path = os.path.join(directory, args.dataset)
-
-    def _torch_to_PIL(image_tensor):
-        image_denormalized = image_tensor
-        image_torch_uint8 = (
-            image_denormalized.mul(255)
-            .add_(0.5)
-            .clamp_(0, 255)
-            .permute(1, 2, 0)
-            .to("cpu", torch.uint8)
-        )
-        image_PIL = PIL.Image.fromarray(image_torch_uint8.numpy())
-        return image_PIL
-
-    def _save_image(input, label, idx, location, train=True):
-        filename = os.path.join(location, str(idx) + ".png")
-        adv_input = advinputs[idx]
-        _torch_to_PIL(adv_input).save(filename)
-
-    os.makedirs(os.path.join(path, "data"), exist_ok=True)
-    for input, label, idx in tqdm(
-        dataloader.dataset, desc="Poisoned dataset generation"
-    ):
-        _save_image(input, label, idx, location=os.path.join(path, "data"), train=True)
-    print("Dataset fully exported.")
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", default="c10", type=str, help="c10")
-    parser.add_argument("--eps", default=8 / 255, type=float)
-    parser.add_argument("--step_size", default=0.8 / 255, type=float)
-
-    args = parser.parse_args()
-    args.num_steps = 100
-    create_poison(args)
-
-
-if __name__ == "__main__":
-    main()

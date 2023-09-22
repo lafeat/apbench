@@ -5,7 +5,9 @@ def options():
     parser = argparse.ArgumentParser(
         description="Construct poisoned training data for the given network and dataset"
     )
-    # Central:
+    parser.add_argument(
+        "--type", default="tap", type=str
+    )
     parser.add_argument(
         "--net", default="ResNet18", type=lambda s: [str(item) for item in s.split(",")]
     )
@@ -61,7 +63,7 @@ def options():
         type=str,
         help="Name tag for the result table and possibly for export folders.",
     )
-    parser.add_argument("--poison_path", default="../dataset/tap_poisons", type=str)
+    parser.add_argument("--poison_path", default="./dataset/tap_poisons", type=str)
     parser.add_argument("--resume", default="", type=str)
     parser.add_argument("--resume_idx", default=None, type=int)
 

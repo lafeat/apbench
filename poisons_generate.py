@@ -10,7 +10,7 @@ import random
 import numpy as np
 from tqdm import tqdm
 import torchvision.models as models
-from attack import ar_poisons, dc_poisons, em_poisons, hypo_poisons, lsp_poisons, ops_poisons, rem_poisons, tap_poisons
+from attack import ar_poisons, dc_poisons, em_poisons, hypo_poisons, lsp_poisons, ops_poisons, rem_poisons, tap_poisons, ntga_poisons
 
 class SubsetImageFolder(datasets.ImageFolder):
     def __init__(
@@ -112,10 +112,9 @@ def create_poison(args):
         train_dataset = SubsetImageFolder(
             root="../dataset/imagenet100/train",
             transform=transforms.Compose(
-                [transforms.Resize((256, 256)), transforms.ToTensor()]
+                [transforms.Resize((224, 224)), transforms.ToTensor()]
             ),
         )
-        noise = torch.zeros([100000, 3, 224, 224])
 
     train_loader = torch.utils.data.DataLoader(
         train_dataset, batch_size=128, shuffle=False, num_workers=args.workers
@@ -156,7 +155,7 @@ def create_poison(args):
         elif args.dataset == "svhn":
             noise = torch.zeros([73257, 3, 32, 32])
         elif args.dataset == "imagenet100":
-            noise = torch.zeros([100000, 3, 224, 224])
+            noise = torch.zeros([20000, 3, 224, 224])
         model = em_poisons.ResNet_Model(name="resnet18", num_classes=num_classes)
         model = model.cuda()
         criterion = torch.nn.CrossEntropyLoss()
@@ -164,7 +163,7 @@ def create_poison(args):
             params=model.parameters(), lr=0.1, weight_decay=0.0005, momentum=0.9
         )
         noise_generator = em_poisons.PerturbationTool(
-            epsilon=args.eps, num_steps=5, step_size=args.eps / 3
+            epsilon=args.eps, num_steps=5, step_size=args.eps / 5
         )
         poison_img, targets = em_poisons.generate_noises(
             model, train_loader, noise, noise_generator, optimizer, criterion
@@ -217,7 +216,7 @@ def create_poison(args):
         elif args.dataset == "svhn":
             noise = torch.zeros([73257, 3, 32, 32])
         elif args.dataset == "imagenet100":
-            noise = torch.zeros([100000, 3, 224, 224])
+            noise = torch.zeros([20000, 3, 224, 224])
             model = models.resnet18(pretrained=False)
             in_f = model.fc.in_features
             model.fc = nn.Linear(in_f, num_classes)
@@ -227,10 +226,10 @@ def create_poison(args):
             params=model.parameters(), lr=0.1, weight_decay=0.0005, momentum=0.9
         )
         noise_generator = rem_poisons.PerturbationTool(
-            epsilon=args.eps, num_steps=3, step_size=args.eps / 2
+            epsilon=args.eps, num_steps=5, step_size=args.eps / 5
         )
         noise_generator_adv = rem_poisons.PerturbationTool(
-            epsilon=args.eps / 2, num_steps=3, step_size=args.eps / 2
+            epsilon=args.eps / 2, num_steps=5, step_size=args.eps / 10
         )
         poison_img, _ = rem_poisons.generate_noises(
             model,
@@ -320,7 +319,6 @@ def main():
                         help="number of workers")
     parser.add_argument("--eps", type=float, default=8 / 255, help='8 / 255 for L_inf and 1.0 for L_2')
     parser.add_argument("--step_size", default=0.8 / 255, type=float)
-    parser.add_argument("--num_steps", default=100, type=int)
     args = parser.parse_args()
     create_poison(args)
 

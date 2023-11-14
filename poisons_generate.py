@@ -202,7 +202,7 @@ def create_poison(args):
         ntga_poisons.export_poison(args.dataset, x_train_adv, x_train)
     elif args.type == 'ops':
         images = train_dataset.data.astype(np.float32) / 255
-        noise = ops_poisons.pixel_search(train_dataset, sparsity=1)
+        noise = ops_poisons.pixel_search(train_dataset, sparsity=1, dataset=args.dataset)
         if args.dataset == "svhn":
             targets = np.array(train_dataset.labels)
         else:

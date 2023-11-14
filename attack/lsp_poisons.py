@@ -60,32 +60,22 @@ def perturb_with_lsp(inputs, targets, dataset):
     l2norm_lim = comput_l2norm_lim(linf, feature_dim)
     simple_data = normalize_l2norm(simple_data, l2norm_lim)
 
-    if dataset == "imagenet100":
-        arr_target = np.array(targets)
-        for label in range(num_classes):
-            orig_data_idx = arr_target == label
-            simple_data_idx = simple_label == label
-            mini_simple_data = simple_data[simple_data_idx][0: int(
-                sum(orig_data_idx))]
-            advinputs[orig_data_idx] += mini_simple_data * 255
-        advinputs = np.clip((advinputs * 255), 0, 255).astype(np.uint8)
+    advinputs = inputs.astype(np.float32) / 255.0
+    if dataset == "svhn":
+        advinputs = np.transpose(advinputs, [0, 2, 3, 1])
+        arr_target = targets
     else:
-        advinputs = inputs.astype(np.float32) / 255.0
-        if dataset == "svhn":
-            advinputs = np.transpose(advinputs, [0, 2, 3, 1])
-            arr_target = targets
-        else:
-            arr_target = np.array(targets)
+        arr_target = np.array(targets)
 
-        # add synthetic noises to original examples
-        for label in range(num_classes):
-            orig_data_idx = arr_target == label
-            simple_data_idx = simple_label == label
-            mini_simple_data = simple_data[simple_data_idx][0: int(
-                sum(orig_data_idx))]
-            advinputs[orig_data_idx] += mini_simple_data
+    # add synthetic noises to original examples
+    for label in range(num_classes):
+        orig_data_idx = arr_target == label
+        simple_data_idx = simple_label == label
+        mini_simple_data = simple_data[simple_data_idx][0: int(
+            sum(orig_data_idx))]
+        advinputs[orig_data_idx] += mini_simple_data
 
-        advinputs = np.clip((advinputs * 255), 0, 255).astype(np.uint8)
+    advinputs = np.clip((advinputs * 255), 0, 255).astype(np.uint8)
 
     return advinputs, targets
 

@@ -217,7 +217,7 @@ def create_poison(args):
             noise = torch.zeros([73257, 3, 32, 32])
         elif args.dataset == "imagenet100":
             noise = torch.zeros([20000, 3, 224, 224])
-            model = models.resnet18(pretrained=False)
+            model = models.resnet18(weights=None)
             in_f = model.fc.in_features
             model.fc = nn.Linear(in_f, num_classes)
         model = model.cuda()

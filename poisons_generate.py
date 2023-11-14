@@ -193,10 +193,6 @@ def create_poison(args):
             advinputs, targets = lsp_poisons.perturb_with_lsp(
                 train_dataset.data, train_dataset.targets, args.dataset
             )
-        if args.dataset == "imagenet100":
-            lsp_poisons.export_imagenet_poison(args, advinputs, targets)
-        else:
-            lsp_poisons.export_poison(args, advinputs, train_dataset)
     elif args.type == 'ntga':
         x_train_adv, x_train = ntga_poisons.ntga_generate(args.eps, args.dataset)
         ntga_poisons.export_poison(args.dataset, x_train_adv, x_train)
@@ -231,7 +227,7 @@ def create_poison(args):
         noise_generator_adv = rem_poisons.PerturbationTool(
             epsilon=args.eps / 2, num_steps=5, step_size=args.eps / 10
         )
-        poison_img, _ = rem_poisons.generate_noises(
+        poison_img, targets = rem_poisons.generate_noises(
             model,
             train_loader,
             noise,

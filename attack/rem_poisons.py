@@ -107,23 +107,9 @@ def generate_noises(
         if acc > 0.99:
             adv_inputs = torch.cat(adv_inputs, dim=0)
             condition = False
-    return adv_inputs, noise
+    return adv_inputs, labels
 
 
-def poisoned_dataset(args, noise, inputs, targets):
-    perturb_noise = noise.mul(255).clamp_(0, 255).permute(0, 2, 3, 1).to("cpu").numpy()
-    inputs = inputs.astype(np.float32)
-
-    if args.dataset == "svhn":
-        inputs = np.transpose(inputs, [0, 2, 3, 1])
-        arr_target = targets
-    else:
-        arr_target = np.array(targets)
-    for i in range(len(inputs)):
-        inputs[i] += perturb_noise[i]
-
-    advinputs = np.clip(inputs, 0, 255).astype(np.uint8)
-    return advinputs, arr_target
 
 
 

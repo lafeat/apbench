@@ -155,7 +155,7 @@ def create_poison(args):
         elif args.dataset == "svhn":
             noise = torch.zeros([73257, 3, 32, 32])
         elif args.dataset == "imagenet100":
-            noise = torch.zeros([100000, 3, 224, 224])
+            noise = torch.zeros([20000, 3, 224, 224])
         model = em_poisons.ResNet_Model(name="resnet18", num_classes=num_classes)
         model = model.cuda()
         criterion = torch.nn.CrossEntropyLoss()
@@ -216,7 +216,7 @@ def create_poison(args):
         elif args.dataset == "svhn":
             noise = torch.zeros([73257, 3, 32, 32])
         elif args.dataset == "imagenet100":
-            noise = torch.zeros([100000, 3, 224, 224])
+            noise = torch.zeros([20000, 3, 224, 224])
             model = models.resnet18(pretrained=False)
             in_f = model.fc.in_features
             model.fc = nn.Linear(in_f, num_classes)

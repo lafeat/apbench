@@ -55,7 +55,7 @@ def UEraser_jpeg(input):
     )
     tmp = random_JPEG_compression(input)
     tmp = torch.clamp(tmp, 0, 1)
-    output = aug(input)
+    output = aug(tmp)
     return output
 
 
@@ -74,5 +74,5 @@ def UEraser_img(input):
     )
     tmp = random_JPEG_compression(input)
     tmp = torch.clamp(tmp, 0, 1)
-    output = aug(input)
+    output = aug(tmp)
     return output

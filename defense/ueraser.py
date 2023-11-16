@@ -32,7 +32,7 @@ def UEraser(input):
             p=0.5,
             keepdim=True,
         ),
-        K.RandomPlasmaContrast(roughness=(0.3, 0.7), p=0.5),
+        K.RandomPlasmaContrast(roughness=(0.3, 0.7), p=0.5), #Not for EM
         K.RandomChannelShuffle(same_on_batch=False, p=0.5, keepdim=True),
         K.auto.TrivialAugment(),
     )

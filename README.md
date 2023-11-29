@@ -140,15 +140,15 @@ You need to confirm that the target poisoned dataset has been generated in advan
 
 | Attacks          | File name                                                  |
 |-      |-      | 
-| DeepConfuse      | [dc_poisons_generate.py](./DC/dc_poisons_generate.py)      | 
-| NTGA             | [ntga_poisons_generate.py](./NTGA/ntga_poisons_generate.py)| 
-| EM               | [em_poisons_generate.py](./EM/em_poisons_generate.py)      | 
-| REM              | [rem_poisons_generate.py](./REM/rem_poisons_generate.py)   | 
-| HYPO             | [hypo_poisons_generate.py](./HYPO/hypo_poisons_generate.py)| 
-| TAP              | [tap_poisons_generate.py](./TAP/tap_poisons_generate.py)   | 
-| LSP              | [lsp_poisons_generate.py](./LSP/lsp_poisons_generate.py)   | 
-| AR               | [ar_poisons_generate.py](./AR/ar_poisons_generate.py)      | 
-| OPS              | [ops_poisons_generate.py](./OPS/ops_poisons_generate.py)   | 
+| DeepConfuse      | [dc_poisons_generate.py](./attack/dc_poisons_generate.py)      | 
+| NTGA             | [ntga_poisons_generate.py](./attack/ntga_poisons_generate.py)| 
+| EM               | [em_poisons_generate.py](./attack/em_poisons_generate.py)      | 
+| REM              | [rem_poisons_generate.py](./attack/rem_poisons_generate.py)   | 
+| HYPO             | [hypo_poisons_generate.py](./attack/hypo_poisons_generate.py)| 
+| TAP              | [tap_poisons_generate.py](./attack/tap_poisons_generate.py)   | 
+| LSP              | [lsp_poisons_generate.py](./attack/lsp_poisons_generate.py)   | 
+| AR               | [ar_poisons_generate.py](./attack/ar_poisons_generate.py)      | 
+| OPS              | [ops_poisons_generate.py](./attack/ops_poisons_generate.py)   | 
 
 
 | Defenses         | File name                                                  |

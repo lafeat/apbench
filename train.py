@@ -127,6 +127,7 @@ def main():
         help="ar, dc, em, rem, hypo, tap, lsp, ntga, ops",
     )
     parser.add_argument("--epochs", type=int, default=200)
+    parser.add_argument("--bs", type=int, default=256)
     parser.add_argument("--lr", default=0.1, type=float, help="learning rate")
     parser.add_argument("--ratio", default=100,
                         type=int, help="poisoned ratio")

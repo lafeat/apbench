@@ -362,17 +362,17 @@ def get_dataset(args, transform_train):
 def get_loader(args, train_dataset, test_dataset):
     if args.dataset == "imagenet100":
         train_loader = torch.utils.data.DataLoader(
-            train_dataset, batch_size=256, shuffle=True, num_workers=4, drop_last=True
+            train_dataset, batch_size=args.bs, shuffle=True, num_workers=4, drop_last=True
         )
         test_loader = torch.utils.data.DataLoader(
-            test_dataset, batch_size=256, shuffle=True, num_workers=4
+            test_dataset, batch_size=args.bs, shuffle=True, num_workers=4
         )
     else:
         train_loader = torch.utils.data.DataLoader(
-            train_dataset, batch_size=128, shuffle=False, num_workers=4, drop_last=True
+            train_dataset, batch_size=args.bs, shuffle=False, num_workers=4, drop_last=True
         )
         test_loader = torch.utils.data.DataLoader(
-            test_dataset, batch_size=128, shuffle=False, num_workers=4
+            test_dataset, batch_size=args.bs, shuffle=False, num_workers=4
         )
     return train_loader, test_loader
 

@@ -112,6 +112,7 @@ The parameter choices for the above commands are as follows:
 - --arch `<Model_arch>`: `r18`, `r50`, `se18`, `mv2`, `de121`, `vit`, `cait`.
 - --type `<Attack>`: `ar`, `dc`, `em`, `rem`, `hypo`, `tap`, `lsp`, `ntga`, `ops`.
 
+
 The above process does not include the AVATAR defense method,
 if you need to implement AVATAR defense, follow the script below：
 
@@ -123,7 +124,7 @@ If you have already generated poisoned dataset, you can generate the purified da
 ```shell
 python pure_gen.py --dataset <Dataset> --type <Attack>
 ```
-**Step 3: Training on poisoned datasets**: 
+**Step 3: Training on purified datasets**: 
 Then, train the model on processed dataset with script below:
 ```shell
 python train.py --pure --dataset <Dataset> --arch <Model_arch> --type <Attack>

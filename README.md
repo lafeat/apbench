@@ -37,7 +37,8 @@ Considering the black-box poisoning scenario, we additionally add 2 transformer-
 APBench contains the following attacks and defenses:
 
 **Attacks**:
-  - 11 availability poisoning attack methods: [DeepConfuse](https://papers.nips.cc/paper_files/paper/2019/file/1ce83e5d4135b07c0b82afffbe2b3436-Paper.pdf),
+  - 11 availability poisoning attack methods:
+  [DeepConfuse](https://papers.nips.cc/paper_files/paper/2019/file/1ce83e5d4135b07c0b82afffbe2b3436-Paper.pdf),
   [NTGA](http://proceedings.mlr.press/v139/yuan21b/yuan21b.pdf),
   [EM](https://openreview.net/pdf?id=iAmZUo0DxC0),
   [REM](https://openreview.net/pdf?id=baUQQPwQiAg),
@@ -50,24 +51,27 @@ APBench contains the following attacks and defenses:
   [TUE](https://arxiv.org/pdf/2210.10114.pdf).
   
 **Defenses**: 
-  - 4 availability poisoning attack methods: [AT](https://arxiv.org/pdf/1706.06083v2.pdf),
+  - 4 availability poisoning attack methods:
+  [AT](https://arxiv.org/pdf/1706.06083v2.pdf),
   [ISS](https://arxiv.org/pdf/2301.13838.pdf),
   [UEraser](https://arxiv.org/pdf/2303.15127.pdf),
-  [AVATAR](https://arxiv.org/pdf/2303.08500.pdf)
+  [AVATAR](https://arxiv.org/pdf/2303.08500.pdf).
   
  **Datasets**: CIFAR-10, CIFAR-100, SVHN, ImageNet-Subset(100).
  
  **Models**: ResNet-18, ResNet-50, SENet-18, MobileNet-V2, DenseNet-121, Vit-small, CaiT-small.
  
- ## Installation
- You can run the following script to configurate necessary environment:
+## Installation
+You can run the following script to configurate necessary environment:
 
- ```
+```shell
 conda create -n apbench python=3.8
 conda activate apbench
 pip install -r requirements.txt
 ```
+
 ## Code Structure
+
 ```
 ├── dataset 
 │   ├── <Dataset> # For clean dataset.
@@ -199,7 +203,7 @@ If you find this benchmark or code is helpful for your research, please cite our
 
 ```
 @article{qin2023apbench,
-  title={APBench: A Unified Benchmark for Availability Poisoning Attacks and Defenses},
+  title={{APBench}: A Unified Benchmark for Availability Poisoning Attacks and Defenses},
   author={Qin, Tianrui and Gao, Xitong and Zhao, Juanjuan and Ye, Kejiang and Xu, Cheng-Zhong},
   journal={arXiv preprint arXiv:2308.03258},
   year={2023}

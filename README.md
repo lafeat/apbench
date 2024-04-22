@@ -98,7 +98,7 @@ following the code structure.
 **Step 1: Generate poisoned datasets**: 
 For example, if you want to generate poisoned datasets of EM, you should run with a demo script below:.
 ```shell
-python poisons_generate.py --type em --dataset <Dataset> --eps <Eps_bound>
+python em_poisons.py --type em --dataset <Dataset> --eps <Eps_bound>
 ```
 The parameter choices for the above commands are as follows:
 - --dataset `<Dataset>`: `c10` , `c100`, `svhn`, `imagenet100`.
@@ -145,15 +145,15 @@ You need to confirm that the target poisoned dataset has been generated in advan
 
 | Attacks          | File name                                                  |
 |-      |-      | 
-| DeepConfuse      | [dc_poisons_generate.py](attack/dc_poisons.py)      | 
-| NTGA             | [ntga_poisons_generate.py](./attack/ntga_poisons_generate.py)| 
-| EM               | [em_poisons_generate.py](./attack/em_poisons_generate.py)      | 
-| REM              | [rem_poisons_generate.py](./attack/rem_poisons_generate.py)   | 
-| HYPO             | [hypo_poisons_generate.py](./attack/hypo_poisons_generate.py)| 
-| TAP              | [tap_poisons_generate.py](./attack/tap_poisons_generate.py)   | 
-| LSP              | [lsp_poisons_generate.py](./attack/lsp_poisons_generate.py)   | 
-| AR               | [ar_poisons_generate.py](./attack/ar_poisons_generate.py)      | 
-| OPS              | [ops_poisons_generate.py](./attack/ops_poisons_generate.py)   | 
+| DeepConfuse      | [dc_poisons.py](attack/dc_poisons.py)      | 
+| NTGA             | [ntga_poisons.py](./attack/ntga_poisons.py)| 
+| EM               | [em_poisons.py](./attack/em_poisons.py)      | 
+| REM              | [rem_poisons.py](./attack/rem_poisons.py)   | 
+| HYPO             | [hypo_poisons.py](./attack/hypo_poisons.py)| 
+| TAP              | [tap_poisons.py](./attack/tap_poisons.py)   | 
+| LSP              | [lsp_poisons.py](./attack/lsp_poisons.py)   | 
+| AR               | [ar_poisons.py](./attack/ar_poisons.py)      | 
+| OPS              | [ops_poisons.py](./attack/ops_poisons.py)   | 
 
 
 | Defenses         | File name                                                  |

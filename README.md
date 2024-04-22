@@ -145,7 +145,7 @@ You need to confirm that the target poisoned dataset has been generated in advan
 
 | Attacks          | File name                                                  |
 |-      |-      | 
-| DeepConfuse      | [dc_poisons_generate.py](attack/dc_poisons_generate.py)      | 
+| DeepConfuse      | [dc_poisons_generate.py](attack/dc_poisons.py)      | 
 | NTGA             | [ntga_poisons_generate.py](./attack/ntga_poisons_generate.py)| 
 | EM               | [em_poisons_generate.py](./attack/em_poisons_generate.py)      | 
 | REM              | [rem_poisons_generate.py](./attack/rem_poisons_generate.py)   | 

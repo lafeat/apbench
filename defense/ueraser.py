@@ -20,7 +20,7 @@ def random_JPEG_compression(in_tensor, quality=None):
     tensor = einops.rearrange(tensor, "(b h) w c -> b c h w", b=in_tensor.size(0)).to(
         in_tensor.device
     )
-    return (in_tensor - in_tensor) + tensor.detach()
+    return (in_tensor - in_tensor.detach()) + tensor.detach()
 
 
 def UEraser(input):

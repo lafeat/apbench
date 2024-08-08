@@ -197,7 +197,7 @@ If you find this benchmark or code is helpful for your research, please cite our
 @article{qin2024apbench,
   title={{APBench}: A Unified Availability Poisoning Attack and Defenses Benchmark},
   author={Tianrui Qin, Xitong Gao, Juanjuan Zhao, Kejiang Ye, Cheng-zhong Xu},
-  journal={Published in Transactions on Machine Learning Research},
+  journal={Transactions on Machine Learning Research (TMLR)},
   year={2024},
   url={https://openreview.net/forum?id=igJ2XPNYbJ},
 }

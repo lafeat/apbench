@@ -6,11 +6,9 @@
 Availability poisoning is an emerging and popular topic that investigates stealthy alterations on data to make that data unusable for deep learning model training. Recent papers have proposed a number of usability poisoning attacks and defenses. It is important to establish a benchmark to review current progress and facilitate future research in the area of availability poisoning. APBench aims to provide easy implementations of availability poisoning attack & defense methods to facilitate future research as well as a comprehensive evaluation of existing attack and defense methods. We eagerly welcome you to contribute your availability poisoning attack & defense methods to APBench.
 
 <p align="center">
+   <a href="https://openreview.net/pdf?id=igJ2XPNYbJ"> Paper (TMLR version) </a > •  <a href="https://apbench.github.io/"> Leaderboard </a>
 <br>
-   <a href="https://arxiv.org/pdf/2308.03258.pdf"> Paper </a > •  <a href="https://apbench.github.io/"> Leaderboard </a > <br>
-<br>
-</p >
-
+</p>
 <img src="assets/main.png" width="800px">
 
 ### ❗v1.1 Model Updates
@@ -18,18 +16,13 @@ Considering the black-box poisoning scenario, we additionally add 2 transformer-
 - **[vit_small.py](./nets/vit_small.py)**: ViT-small model.
 - **[cait_small.py](./nets/cait_small.py)**: CaiT-small model.
 
-## Content
+## Table of Contents
 
 * [Overview](#Overview)
-
 * [Installation](#Installation)
-
 * [Code Structure](#code-structure)
-
 * [Quick Start](#quick-start)
-
 * [Supported Methods](#supported-methods)
-
 * [Unsupervised Methods](#unsupervised-methods)
 
 ## Overview
@@ -57,9 +50,9 @@ APBench contains the following attacks and defenses:
   [UEraser](https://arxiv.org/pdf/2303.15127.pdf),
   [AVATAR](https://arxiv.org/pdf/2303.08500.pdf).
   
- **Datasets**: CIFAR-10, CIFAR-100, SVHN, ImageNet-Subset(100).
+**Datasets**: CIFAR-10, CIFAR-100, SVHN, ImageNet-Subset (100).
  
- **Models**: ResNet-18, ResNet-50, SENet-18, MobileNet-V2, DenseNet-121, Vit-small, CaiT-small.
+**Models**: ResNet-18, ResNet-50, SENet-18, MobileNet-V2, DenseNet-121, Vit-small, CaiT-small.
  
 ## Installation
 You can run the following script to configurate necessary environment:
@@ -77,16 +70,16 @@ pip install -r requirements.txt
 │   ├── <Dataset> # For clean dataset.
 │   ├── <Type>_poisons # For poisoned dataset.
 │   ├── <Supervised_type>_pure # Poisoned dataset for supervised learning.
-│   ├── <Unsupervised_type>_pure # Poisoned dataset for unsupervised learning.
-│   │   └── <Arch> # Unsupervised arch: simclr and moco.
+│   └── <Unsupervised_type>_pure # Poisoned dataset for unsupervised learning.
+│       └── <Arch> # Unsupervised arch: simclr and moco.
 ├── defense 
-│   ├── diffusion # For defense AVATAR
-│   │   └── pretrained
-│   │       └── score_sde
-│   │           └── checkpoint_8.pth # Pretrained diffusion model for CIFAR-10
-├── log # contains checkpoints
-│   ├── <Dataset> # Dataset type. e.g. c10, c100, imagenet100, and unsupervised.
-│   │   └── <Type> # Attack type. e.g. em, rem ...
+│   └── diffusion # For defense AVATAR
+│       └── pretrained
+│           └── score_sde
+│               └── checkpoint_8.pth # Pretrained diffusion model for CIFAR-10
+└── log # contains checkpoints
+    └── <Dataset> # Dataset type. e.g. c10, c100, imagenet100, and unsupervised.
+        └── <Type> # Attack type. e.g. em, rem ...
 ```
 You should download pretrained checkpoint [checkpoint_8.pth](https://drive.google.com/drive/folders/1xYjVMx10N9ivQQBIsEoXEeu9nvSGTBrC) 
 from [Guided-diffusion](https://github.com/yang-song/score_sde_pytorch)
@@ -200,12 +193,12 @@ You can also get ImageNet-100 by slicing ImageNet-1K (slight difference in sampl
 ## Citation
 
 If you find this benchmark or code is helpful for your research, please cite our paper:
-
-```
-@article{qin2023apbench,
-  title={{APBench}: A Unified Benchmark for Availability Poisoning Attacks and Defenses},
-  author={Qin, Tianrui and Gao, Xitong and Zhao, Juanjuan and Ye, Kejiang and Xu, Cheng-Zhong},
-  journal={arXiv preprint arXiv:2308.03258},
-  year={2023}
+```bib
+@article{qin2024apbench,
+  title={{APBench}: A Unified Availability Poisoning Attack and Defenses Benchmark},
+  author={Tianrui Qin, Xitong Gao, Juanjuan Zhao, Kejiang Ye, Cheng-zhong Xu},
+  journal={Published in Transactions on Machine Learning Research},
+  year={2024},
+  url={https://openreview.net/forum?id=igJ2XPNYbJ},
 }
 ```

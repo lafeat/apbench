@@ -6,10 +6,24 @@
 Availability poisoning is an emerging and popular topic that investigates stealthy alterations on data to make that data unusable for deep learning model training. Recent papers have proposed a number of usability poisoning attacks and defenses. It is important to establish a benchmark to review current progress and facilitate future research in the area of availability poisoning. APBench aims to provide easy implementations of availability poisoning attack & defense methods to facilitate future research as well as a comprehensive evaluation of existing attack and defense methods. We eagerly welcome you to contribute your availability poisoning attack & defense methods to APBench.
 
 <p align="center">
-   <a href="https://openreview.net/pdf?id=igJ2XPNYbJ"> Paper (TMLR version) </a > •  <a href="https://apbench.github.io/"> Leaderboard </a>
-<br>
+    <a href="https://openreview.net/pdf?id=igJ2XPNYbJ"> Paper (TMLR version) </a> •  <a href="https://apbench.github.io/"> Leaderboard </a>
+    <br/><br/>
+    <img src="assets/main.png" width="800px">
 </p>
-<img src="assets/main.png" width="800px">
+
+## Citation
+
+If you find this benchmark helpful for your research, please cite our paper:
+```bib
+@article{qin2024apbench,
+    title={{APB}ench: A Unified Availability Poisoning Attack and Defenses Benchmark},
+    author={Tianrui Qin and Xitong Gao and Juanjuan Zhao and Kejiang Ye and Cheng-zhong Xu},
+    journal={Transactions on Machine Learning Research},
+    issn={2835-8856},
+    year={2024},
+    url={https://openreview.net/forum?id=igJ2XPNYbJ},
+}
+```
 
 ### ❗v1.1 Model Updates
 Considering the black-box poisoning scenario, we additionally add 2 transformer-based models ViT and CaiT.
@@ -190,15 +204,3 @@ python us_train_pu.py --dataset <Dataset>  --arch <Model_arch> --defense <Defens
 We use the pre-processed ImageNet-100 [Download Link](https://github.com/TerryLoveMl/ImageNet-100-datasets).
 You can also get ImageNet-100 by slicing ImageNet-1K (slight difference in sample size).
 
-## Citation
-
-If you find this benchmark or code is helpful for your research, please cite our paper:
-```bib
-@article{qin2024apbench,
-  title={{APBench}: A Unified Availability Poisoning Attack and Defenses Benchmark},
-  author={Tianrui Qin, Xitong Gao, Juanjuan Zhao, Kejiang Ye, Cheng-zhong Xu},
-  journal={Transactions on Machine Learning Research (TMLR)},
-  year={2024},
-  url={https://openreview.net/forum?id=igJ2XPNYbJ},
-}
-```

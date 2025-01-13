@@ -105,11 +105,12 @@ following the code structure.
 **Step 1: Generate poisoned datasets**: 
 For example, if you want to generate poisoned datasets of EM, you should run with a demo script below:.
 ```shell
-python poisons_generate.py --type em --dataset <Dataset> --eps <Eps_bound>
+python poisons_generate.py --type em --dataset <Dataset> --eps=<Eps_bound>
 ```
 The parameter choices for the above commands are as follows:
 - --dataset `<Dataset>`: `c10` , `c100`, `svhn`, `imagenet100`.
 - --type `<Attack>`: `ar`, `dc`, `em`, `rem`, `hypo`, `tap`, `lsp`, `ntga`, `ops`.
+
 P.S. `em`, `rem` and `lsp` support [`c10` , `c100`, `svhn`, `imagenet100`]; `ops` and `ar` support [`c10` , `c100`, `svhn`]; `dc`, `hypo`, `tap` and `ntga` support [`c10`].
 
 **Step 2: Training on poisoned datasets**: 

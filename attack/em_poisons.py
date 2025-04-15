@@ -5,8 +5,8 @@ import argparse
 import PIL
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
-from attack.basic import ResNet_Model
-from attack.basic import PerturbationTool
+from attack.basic.em_utils import ResNet_Model
+from attack.basic.em_utils import PerturbationTool
 import random
 import os
 

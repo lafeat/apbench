@@ -217,7 +217,7 @@ class PerturbationTool:
         eta = random_noise
 
         # Adaptive
-        perturb_img = Variable(UEraser(perturb_img), requires_grad=True)
+        # perturb_img = Variable(UEraser(perturb_img), requires_grad=True)
         
         for _ in range(self.num_steps):
             opt = torch.optim.SGD([perturb_img], lr=1e-3)
